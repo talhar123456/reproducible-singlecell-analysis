@@ -1,10 +1,29 @@
 # reproducible-singlecell-analysis
-A repository dedicated to reproducible single-cell analysis workflows using R and related tools. This repository includes scripts and configurations for installing necessary R packages, managing dependencies, and troubleshooting common installation issues. It covers:
 
-- Setting up and configuring R environments with Conda
-- Resolving package installation errors
-- Using and managing swap memory
-- Handling missing dependencies in R packages
-- Running and debugging R scripts for single-cell analysis
+This was a seminar I attended we were to reproduce the results of a paper "Dictionary learning for integrative, multimodal and scalable single-cell analysis". Unfortunately we weren't unable to reproduce the results the challenges we faced are below.
 
-This repository aims to provide a comprehensive guide for researchers and data scientists to ensure reproducibility in their single-cell analysis pipelines.
+Challenges and Difficulties
+
+    Package Installation Issues
+        Problem: Numerous R packages required for single-cell analysis (e.g., Seurat, igraph, hdf5r) could not be installed due to missing dependencies or compilation issues.
+        Details: Errors such as missing header files (glpk.h), unavailable HDF5 libraries, and other dependencies caused installation failures. This impeded the ability to use essential libraries for single-cell analysis.
+
+    Dependency Management
+        Problem: The R environment faced difficulties with package dependencies, particularly with packages like igraph and leiden, which are required by Seurat.
+        Details: The installation of igraph failed due to missing HDF5 support, which is critical for many bioinformatics and data analysis packages. This ripple effect led to the failure of dependent packages such as leiden and Seurat.
+
+    Environment Configuration
+        Problem: Configuring R within a Conda environment introduced challenges with ensuring that all necessary system dependencies and libraries were properly configured.
+        Details: Issues included incorrect paths or missing development tools (like h5cc for HDF5), and problems with accessing CRAN mirrors and installing packages non-interactively.
+
+    Swap Memory and System Resource Management
+        Problem: Limited understanding and configuration of swap memory and its impact on system performance.
+        Details: Swap memory was discussed in terms of its potential effects on SSD lifespan, and there were concerns about how to effectively manage system resources during intensive computations.
+
+    Reproducibility and Debugging
+        Problem: Ensuring reproducibility of the analysis was challenging due to the errors and issues with package installations and system configurations.
+        Details: Debugging errors involved manually addressing each package installation failure, configuring paths and dependencies correctly, and dealing with system-specific quirks.
+
+    Interactive and Non-Interactive Sessions
+        Problem: Some errors occurred due to the interactive nature of certain R functions, which do not work well in non-interactive scripts.
+        Details: The need for interactive prompts for selecting CRAN mirrors and other settings caused issues when running scripts non-interactively.
