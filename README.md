@@ -1,6 +1,6 @@
 # Reproducible Single-Cell Analysis
 
-This repository documents our attempt to reproduce the results of the paper "Dictionary Learning for Integrative, Multimodal, and Scalable Single-Cell Analysis" as part of a seminar. Despite extensive efforts, we encountered significant challenges in replicating the results.
+This repository documents our attempt to reproduce the results of the paper ["Dictionary Learning for Integrative, Multimodal, and Scalable Single-Cell Analysis"](https://doi.org/10.1038/s41587-023-01767-y) as part of a seminar. Despite extensive efforts, we encountered significant challenges in replicating the results.
 
 ## Challenges and Difficulties
 
@@ -40,6 +40,10 @@ This repository documents our attempt to reproduce the results of the paper "Dic
 - **Reproducibility Guidelines**: Offer detailed reproducibility guidelines to help users replicate the results effectively.
 - **Community Support**: Engage with the community to provide support and address issues that users may face.
 - **Version Control**: Use version control for both code and dependencies to ensure consistency and reproducibility.
+
+## Reference
+
+For further information, please refer to the original paper: ["Dictionary Learning for Integrative, Multimodal, and Scalable Single-Cell Analysis"](https://doi.org/10.1038/s41587-023-01767-y).
 
 ## Acknowledgments
 
