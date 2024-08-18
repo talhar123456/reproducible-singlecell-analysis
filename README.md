@@ -1,35 +1,48 @@
 # Reproducible Single-Cell Analysis
 
-This repository documents the process and challenges faced while attempting to reproduce the results of the paper "Dictionary Learning for Integrative, Multimodal, and Scalable Single-Cell Analysis" during a seminar.
+This repository documents our attempt to reproduce the results of the paper "Dictionary Learning for Integrative, Multimodal, and Scalable Single-Cell Analysis" as part of a seminar. Despite extensive efforts, we encountered significant challenges in replicating the results.
 
 ## Challenges and Difficulties
 
-### Package Installation Issues
-- **Problem**: Numerous R packages required for single-cell analysis (e.g., `Seurat`, `igraph`, `hdf5r`) could not be installed due to missing dependencies or compilation issues.
-- **Details**: Errors such as missing header files (`glpk.h`), unavailable HDF5 libraries, and other dependencies caused installation failures. This impeded the ability to use essential libraries for single-cell analysis.
+### Package Version Conflicts
+- **Problem**: Conflicts between package versions led to numerous issues with package installations and functionality.
+- **Details**: Specific packages required for the analysis had version conflicts that hindered their proper installation and operation.
 
-### Dependency Management
-- **Problem**: The R environment faced difficulties with package dependencies, particularly with packages like `igraph` and `leiden`, which are required by `Seurat`.
-- **Details**: The installation of `igraph` failed due to missing HDF5 support, which is critical for many bioinformatics and data analysis packages. This ripple effect led to the failure of dependent packages such as `leiden` and `Seurat`.
+### Sessions Crashing Due to Memory Limit
+- **Problem**: R sessions frequently crashed due to memory constraints.
+- **Details**: Even after attempting various memory management strategies, the sessions were consistently killed due to insufficient memory.
 
-### Environment Configuration
-- **Problem**: Configuring R within a Conda environment introduced challenges with ensuring that all necessary system dependencies and libraries were properly configured.
-- **Details**: Issues included incorrect paths or missing development tools (like `h5cc` for HDF5), and problems with accessing CRAN mirrors and installing packages non-interactively.
+### Reproduction Failures
+- **Problem**: Following the vignette and attempting to reproduce the results failed consistently.
+- **Details**: Sessions were terminated each time we attempted to run the code, primarily due to high memory usage.
 
-### Swap Memory and System Resource Management
-- **Problem**: Limited understanding and configuration of swap memory and its impact on system performance.
-- **Details**: Swap memory was discussed in terms of its potential effects on SSD lifespan, and there were concerns about how to effectively manage system resources during intensive computations.
+### Empirical Findings
+- **Finding**: A minimum of 64GB of RAM was empirically determined to be necessary to run the code effectively.
 
-### Reproducibility and Debugging
-- **Problem**: Ensuring reproducibility of the analysis was challenging due to the errors and issues with package installations and system configurations.
-- **Details**: Debugging errors involved manually addressing each package installation failure, configuring paths and dependencies correctly, and dealing with system-specific quirks.
+## Actions Taken
 
-### Interactive and Non-Interactive Sessions
-- **Problem**: Some errors occurred due to the interactive nature of certain R functions, which do not work well in non-interactive scripts.
-- **Details**: The need for interactive prompts for selecting CRAN mirrors and other settings caused issues when running scripts non-interactively.
+- **Downsampled the Data**: Attempted to reduce the size of the data to fit within available memory limits.
+- **Divided Data into Batches**: Processed data in smaller batches to manage memory usage better.
+- **Allocated More Memory to R Session**: Tried increasing memory allocation to the R session.
+- **Used Google Colab**: Leveraged Google Colab with ~32 GB RAM, but still faced issues due to memory limits.
+- **Progress**: Despite these efforts, the session was killed every time due to insufficient memory.
 
 ## Conclusion
 
-The attempt to reproduce the results encountered several hurdles, primarily related to package installations, dependency management, and environment configuration. Addressing these challenges would involve ensuring proper installation of all necessary packages and dependencies, configuring the environment correctly, and resolving system-specific issues. This repository serves as a record of these difficulties and the steps taken to address them.
+- **Difficulty in Reconstructing Paper's Data**: It was challenging to replicate the figures and results from the paper.
+- **Significant Computational Resource Demand**: The analysis required substantial computational resources. The minimum hardware specification identified was 64GB of RAM.
+- **Conflicting Packages**: Package versions and dependencies were unclear and contributed to the difficulties.
 
-For further information or to contribute to resolving these issues, please refer to the documentation and discussions within this repository.
+## Advice to the Authors
+
+- **Clear Documentation**: Provide comprehensive documentation outlining the system requirements and steps needed to reproduce the results.
+- **Minimum System Requirements**: Clearly list the minimal system requirements. Based on our findings, a minimum of 64GB of RAM is necessary.
+- **Reproducibility Guidelines**: Offer detailed reproducibility guidelines to help users replicate the results effectively.
+- **Community Support**: Engage with the community to provide support and address issues that users may face.
+- **Version Control**: Use version control for both code and dependencies to ensure consistency and reproducibility.
+
+## Acknowledgments
+
+We appreciate the effort that went into the original research and hope these insights will help in improving the reproducibility of the results.
+
+For further information or to contribute, please refer to the discussions and documentation within this repository.
